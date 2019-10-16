@@ -10,7 +10,7 @@ const app = express();
 let dev_db_url = 'mongodb://127.0.0.1:27017/books';
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
 
-mongoose.connect(mongoDB, {useNewUrlParser: true });
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 
 let db = mongoose.connection;
