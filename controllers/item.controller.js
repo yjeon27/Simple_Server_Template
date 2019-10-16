@@ -1,4 +1,4 @@
-const Product = require('../models/product.model');
+const Item = require('../models/item.model');
 
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
@@ -6,36 +6,37 @@ exports.test = function (req, res) {
 };
 
 exports.create = function (req, res) {
-    let product = new Product({
+    let item = new Item({
         name: req.body.name,
-        price: req.body.price
+        type: req.body.type,
+        due: req.body.due
     });
 
-    product.save(function(err) {
+    item.save(function(err) {
         if(err){
             return next(err);
         }
-        res.send("Product Created Successfully");
+        res.send("Item Created Successfully");
     });
 };
 
 exports.details = function (req, res){
-    Product.findById(req.params.id, function (err, product){
+    Item.findById(req.params.id, function (err, item){
         if(err) return next(err);
-        res.send(product);
+        res.send(item);
     })
 }
 
 exports.update = function (req, res){
-    Product.findByIdAndUpdate(req.params.id, {$set: req.body},
-        function(err, product){
+    Item.findByIdAndUpdate(req.params.id, {$set: req.body},
+        function(err, item){
             if(err) return next(err);
-            res.send("Product updated.");
+            res.send("Item updated.");
         });
 };
 
 exports.delete = function (req, res){
-    Product.findByIdAndRemove(req.params.id, function (err){
+    Item.findByIdAndRemove(req.params.id, function (err){
         if(err) return next(err);
         res.send("Deleted Successfully!");
     })
