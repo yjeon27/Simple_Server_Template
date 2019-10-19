@@ -8,6 +8,8 @@ const controller = require('../controllers/item.controller');
 // a simple test url to check that all of our files are communicating correctly.
 router.get('/test', controller.test);
 
+router.get('/getAll', controller.getAll);
+
 router.post('/create', controller.create);
 
 router.get('/:id', controller.details);
@@ -15,5 +17,6 @@ router.get('/:id', controller.details);
 router.put('/:id/update', controller.update);
 
 router.delete('/:id/delete', controller.delete);
+
 
 module.exports = router;
