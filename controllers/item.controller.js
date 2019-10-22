@@ -34,7 +34,7 @@ exports.getAll = function (req, res){
     debugger;
     console.log('GETALL: Queried for '+req.params.id);
 
-    Item.find({}, 'name', function(err, item){
+    Item.find({}, 'name type due', function(err, item){
         if(err){
             console.log(err);
         }else{
