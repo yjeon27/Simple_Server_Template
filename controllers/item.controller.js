@@ -2,7 +2,6 @@ const Item = require('../models/item.model');
 
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
-    debugger;
     res.send('Greetings from the Test controller!');
 };
 
@@ -10,7 +9,8 @@ exports.create = function (req, res) {
     let item = new Item({
         name: req.body.name,
         type: req.body.type,
-        due: req.body.due
+        due: req.body.due,
+        quantity: req.body.quantity
     });
 
     item.save(function(err) {
@@ -22,7 +22,6 @@ exports.create = function (req, res) {
 };
 
 exports.details = function (req, res){
-    debugger;
     console.log('DETAILS: Queried for '+req.params.id);
     Item.findById(req.params.id, function (err, item){
         if(err) return next(err);
@@ -31,10 +30,9 @@ exports.details = function (req, res){
 };
 
 exports.getAll = function (req, res){
-    debugger;
     console.log('GETALL: Queried for '+req.params.id);
 
-    Item.find({}, 'name type due', function(err, item){
+    Item.find({}, 'name type due quantity', function(err, item){
         if(err){
             console.log(err);
         }else{

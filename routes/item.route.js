@@ -4,19 +4,13 @@ const router = express.Router();
 // Require the controllers WHICH WE DID NOT CREATE YET!!
 const controller = require('../controllers/item.controller');
 
-
-// a simple test url to check that all of our files are communicating correctly.
-// router.get('/test', controller.test);
-
-// router.get('/getAll', controller.getAll);
-
-// router.post('/create', controller.create);
-
-// router.get('/:id', controller.details);
-
-// router.put('/:id/update', controller.update);
-
-// router.delete('/:id/delete', controller.delete);
+router.use(function(req, res, next){
+    console.log("LOG");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+    next();
+});
 
 router.get('/test', controller.test)
     .get('/getAll', controller.getAll)
