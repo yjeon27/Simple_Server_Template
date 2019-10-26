@@ -15,7 +15,7 @@
                 <input type="text" id="titleInput" required></input></li>
 
                 <li><label for="typeLabel">Type:</label>
-                <select name="type" required>
+                <select name="type" id="type" required>
                     <option value="book">Book</option>
                     <option value="CD">CD</option>
                 </select></li>
@@ -31,6 +31,8 @@
             </ul>
         </form>
         <br><br>
+
+        <input type="button" id="getDB"></input>
 
         <div id="items">
             <ul id="itemsList"></ul>
