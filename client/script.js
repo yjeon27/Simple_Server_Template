@@ -1,12 +1,17 @@
 window.onload=function(){
     const url = "http://35.153.175.88:8080/items/";
     const addForm = document.getElementById("addItemForm"),
+        updateForm = document.getElementById("updateForm"),
         addTitle = document.getElementById("titleInput"),
         addType = document.getElementById("type"),
         addDue = document.getElementById("due"),
         addQty = document.getElementById("quantity"),
-        submitBtn = document.getElementById("addItem"),
-        getDB = document.getElementById("getDB");
+        getDB = document.getElementById("getDB"),
+        updateID = this.document.getElementById("updateID"),
+        updateTitle = this.document.getElementById("updateTitle"),
+        updateType = this.document.getElementById("updateType"),
+        updateDue = this.document.getElementById("updateDue"),
+        updateQty = this.document.getElementById("updateQty");
     getDB.setAttribute("value", "getDB");
 
 
@@ -60,15 +65,39 @@ window.onload=function(){
         http.send();
     });
 
-    addForm.addEventListener("submit", function(e){
+    updateForm.addEventListener("submit", function(e){
         const http = new XMLHttpRequest();
-        debugger
         e.preventDefault();
 
-        console.log('Title: '+addTitle.value);
-        console.log('Type: '+addType.options[addType.selectedIndex].value);
-        console.log('Due: '+addDue.value);
-        console.log('Qty: '+addQty.value);
+        let param = [];
+
+        http.open("PUT", url+updateID.value+"/update", true);
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        param = [encodeURIComponent("name")+"="+encodeURIComponent(updateTitle.value),
+        encodeURIComponent("type")+"="+encodeURIComponent(updateType.options[updateType.selectedIndex].value),
+        encodeURIComponent("due")+"="+encodeURIComponent(updateDue.value),
+        encodeURIComponent("quantity")+"="+encodeURIComponent(updateQty.value)]
+        console.log(param.join('&'));
+        // debugger
+        http.onload = function(){
+            if(http.status==200 && http.readyState==4){
+                param = [encodeURIComponent("name")+"="+encodeURIComponent(updateTitle.value),
+                encodeURIComponent("type")+"="+encodeURIComponent(updateType.options[updateType.selectedIndex].value),
+                encodeURIComponent("due")+"="+encodeURIComponent(updateDue.value),
+                encodeURIComponent("quantity")+"="+encodeURIComponent(updateQty.value)]
+                console.log(param.join('&'));
+            }else{
+                alert(http.status);
+            }
+        }
+        http.send(param.join('&'));
+    });
+
+    addForm.addEventListener("submit", function(e){
+        const http = new XMLHttpRequest();
+        // debugger
+        e.preventDefault();
 
         let param = [];
 
@@ -94,4 +123,6 @@ window.onload=function(){
         }
         http.send(param.join('&'));
     });
+
+
 }

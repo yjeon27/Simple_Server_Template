@@ -30,7 +30,33 @@
                 <input type="submit" id="addItem"></input>
             </ul>
         </form>
-        <br><br>
+        <br>
+        
+        <form id="updateForm">
+            <ul id="formList1">
+                <li><label for="updateIDLabel">ID:</label>
+                <input type="text" id="updateID" required></input></li>
+
+                <li><label for="updateTitleLabel">Title:</label>
+                <input type="text" id="updateTitle" required></input></li>
+
+                <li><label for="updateTypeLabel">Type:</label>
+                <select name="updateType" id="updateType" required>
+                    <option value="book">Book</option>
+                    <option value="CD">CD</option>
+                </select></li>
+
+                <li><label for="updateDueLabel">Due:</label>
+                <input type="number" id="updateDue" min="1" max="30" step="1" required></input></li>
+
+                <li><label for="updateQtyLabel">Quantity:</label>
+                <input type="number" id="updateQty" min="1" max="20" step="1" required></input></li>
+
+                <br>
+                <input type="submit" id="updateBtn" value="Update"></input>
+            </ul>
+        </form>
+        <br>
 
         <input type="button" id="getDB"></input>
 
