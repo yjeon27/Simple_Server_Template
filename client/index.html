@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SE 3316 - Lab 3</title>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href = "index.css"/>
+        <script type="text/javascript" src='script.js'></script>
+    </head>
+    <body>
+
+        <h1>Add Item</h1>
+        <form id="addItemForm">
+            <ul id="formList">
+                <li><label for="titleLabel">Title:</label>
+                <input type="text" id="titleInput" required></input></li>
+
+                <li><label for="typeLabel">Type:</label>
+                <select name="type" id="type" required>
+                    <option value="book">Book</option>
+                    <option value="CD">CD</option>
+                </select></li>
+
+                <li><label for="dueLabel">Due:</label>
+                <input type="number" id="due" min="1" max="30" step="1" required></input></li>
+
+                <li><label for="quantityLabel">Quantity:</label>
+                <input type="number" id="quantity" min="1" max="20" step="1" required></input></li>
+
+                <br>
+                <input type="submit" id="addItem"></input>
+            </ul>
+        </form>
+        <br>
+        
+        <form id="updateForm">
+            <ul id="formList1">
+                <li><label for="updateIDLabel">ID:</label>
+                <input type="text" id="updateID" required></input></li>
+
+                <li><label for="updateTitleLabel">Title:</label>
+                <input type="text" id="updateTitle" required></input></li>
+
+                <li><label for="updateTypeLabel">Type:</label>
+                <select name="updateType" id="updateType" required>
+                    <option value="book">Book</option>
+                    <option value="CD">CD</option>
+                </select></li>
+
+                <li><label for="updateDueLabel">Due:</label>
+                <input type="number" id="updateDue" min="1" max="30" step="1" required></input></li>
+
+                <li><label for="updateQtyLabel">Quantity:</label>
+                <input type="number" id="updateQty" min="1" max="20" step="1" required></input></li>
+
+                <br>
+                <input type="submit" id="updateBtn" value="Update"></input>
+            </ul>
+        </form>
+        <br>
+
+        <form id="deleteForm">
+            <ul id="formList2">
+            <li><label for="deleteIDLabel">ID:</label>
+            <input type="text" id="deleteID" required></input></li>
+
+            <br/>
+            <input type="submit" id="deleteBtn" value="Delete"></input>
+            </ul>
+        </form>
+        <br>
+
+        <form id="getForm">
+            <ul id="formList3">
+            <li><label for="getIDLabel">ID:</label>
+            <input type="text" id="getID" required></input></li>
+
+            <br/>
+            <input type="submit" id="getBtn" value="Get"></input>
+            </ul>
+        </form>
+
+        <br/><br/>
+        <input type="button" id="getDB"></input>
+
+        <div id="items">
+            <ul id="itemsList"></ul>
+        </div>
+
+        <br><br><br><br>
+        <div id="google_translate_element"></div>
+        <script>
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                    {pageLanguage: 'en'},
+                    'google_translate_element'
+                );
+            }
+        </script>
+        <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    </body>
+</html>
