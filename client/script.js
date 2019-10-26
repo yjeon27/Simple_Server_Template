@@ -2,12 +2,14 @@ window.onload=function(){
     const url = "http://35.153.175.88:8080/items/";
     const addForm = document.getElementById("addItemForm"),
         updateForm = document.getElementById("updateForm"),
+        deleteForm = document.getElementById("deleteForm"),
         addTitle = document.getElementById("titleInput"),
         addType = document.getElementById("type"),
         addDue = document.getElementById("due"),
         addQty = document.getElementById("quantity"),
         getDB = document.getElementById("getDB"),
         updateID = this.document.getElementById("updateID"),
+        deleteID = this.document.getElementById("deleteID"),
         updateTitle = this.document.getElementById("updateTitle"),
         updateType = this.document.getElementById("updateType"),
         updateDue = this.document.getElementById("updateDue"),
@@ -34,36 +36,21 @@ window.onload=function(){
                 li.appendChild(tempNode);
                 itemsList.appendChild(li);
             }
-
-
-
-            // for(let i=0; i<obj.length; i++){
-            //     // debugger;
-            //     const li = document.createElement("li");
-            //     li.setAttribute("id", "li"+i);
-            //     const itemsList = document.getElementById("itemsList");
-
-            //     const tempNode = document.createTextNode(JSON.stringify(obj[i]));
-            //     li.appendChild(tempNode);
-
-            //     let flag=1;
-            //     for(let j=0; j<itemsList.childElementCount; j++){
-            //         if(JSON.parse(document.getElementById("li"+j).innerHTML).name==obj[i].name){
-            //             console.log('ALRDY EXISTS');
-            //             flag=0;
-            //             break;
-            //         }else{
-            //             console.log('nope');
-            //         }
-            //     }
-                
-            //     if(flag){
-            //         itemsList.appendChild(li);
-            //     }
-            // }
         }
         http.send();
     });
+
+    deleteForm.addEventListener("submit", function(e){
+        debugger
+        const http = new XMLHttpRequest();
+        e.preventDefault();
+
+        http.open("DELETE", url+deleteID.value+"/delete", true);
+        http.onload = function(){
+            console.log('DELETING: '+url+deleteID.value+"/delete");
+        };
+        http.send(deleteID.value);
+    })
 
     updateForm.addEventListener("submit", function(e){
         const http = new XMLHttpRequest();
