@@ -1,4 +1,4 @@
-#addItemForm, #updateForm, #deleteForm{
+#addItemForm, #updateForm, #deleteForm, #getForm{
     border-style: solid;
     border-width: 3px;
 }
@@ -16,4 +16,9 @@
 #formList2>li{
     list-style-type:none;
     padding: 3px;
+}
+
+#formList3>li{
+    list-style-type:none;
+    padding: 3px;   
 }
